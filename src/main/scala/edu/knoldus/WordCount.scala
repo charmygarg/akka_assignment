@@ -5,6 +5,7 @@ import akka.actor.{Actor, ActorSystem, Props}
 import akka.routing.FromConfig
 import akka.util.Timeout
 import com.typesafe.config.ConfigFactory
+import edu.knoldus.WordCount.State
 import scala.io.Source
 import akka.pattern.ask
 import scala.concurrent.duration._
@@ -31,17 +32,15 @@ class WordCount extends Actor {
     fileSource.getLines
   }
 
-
   private def getWordCount(line: String) = {
     line.split("\\s+").length
   }
 
 }
 
-case object State
-
 object WordCount extends App {
 
+  case object State
   var counter = 0
 
   val config = ConfigFactory.parseString(
