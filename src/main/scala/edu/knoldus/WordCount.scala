@@ -1,6 +1,7 @@
 package edu.knoldus
 
 import java.io.File
+
 import akka.actor.{Actor, ActorSystem, Props}
 import akka.routing.FromConfig
 import akka.util.Timeout
@@ -32,15 +33,18 @@ class WordCount extends Actor {
     fileSource.getLines
   }
 
+
   private def getWordCount(line: String) = {
     line.split("\\s+").length
   }
 
 }
 
+
 object WordCount extends App {
 
   case object State
+
   var counter = 0
 
   val config = ConfigFactory.parseString(
@@ -67,6 +71,7 @@ object WordCount extends App {
 
   val count = router ? State
   println("Count of Words in a file: ")
-  count.foreach(println)
+  count foreach println
 
 }
+
