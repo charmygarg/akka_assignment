@@ -8,14 +8,15 @@ import akka.pattern.ask
 
 class BookMyShow extends Actor {
 
+  var status: Boolean = true
+
   override def receive = {
     case list => sender() ! checkBooked
   }
 
   def checkBooked = {
-    //Thread.sleep(100)
-    if(BookMyShow.status) {
-      BookMyShow.status = false
+    if(status) {
+      status = false
       "Your seat has been booked!!"
     } else {
       "Sorry! Seat has been taken"
@@ -25,8 +26,6 @@ class BookMyShow extends Actor {
 }
 
 object BookMyShow extends App {
-
-  var status: Boolean = true
 
   val list = List.range(1, 10)
   val system = ActorSystem("BookMyShow")
