@@ -4,7 +4,7 @@
 		module="edu-knoldus-wordcount$sbt_2.11"
 		revision="1.0"
 		status="integration"
-		publication="20170320110756"
+		publication="20170321102353"
 	/>
 	<configurations>
 		<conf name="default" visibility="public"/>
